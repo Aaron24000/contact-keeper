@@ -5,11 +5,12 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator/check');
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 
 // @route GET api/auth
 // @desc Get logged in user
 // @access Private
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
