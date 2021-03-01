@@ -10,10 +10,6 @@ connectDB();
 // Init midlleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) =>
-//   res.json({ msg: "Welcome to the contact keeper API" })
-);
-
 // Server static assets in production
 if(process.env.NODE_ENV === 'production') {
     // Set static folder
